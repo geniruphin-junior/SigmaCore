@@ -19,4 +19,6 @@ python app.py
 
 ## Utilité
 
-personnelement moi et mon collegue lors de nos révisions et lors de nos devoirs cette app a était utile car elle nous a aidé à verifier si nos reponse ou nos reflexions étaient bonnes ou pas
+personnelement moi et mon collègue lors de nos révisions et lors de nos devoirs cette app a était utile car elle nous a aidé à verifier si nos reponse ou nos reflexions étaient bonnes ou pas
+
+##
