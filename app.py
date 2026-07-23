@@ -11,14 +11,13 @@ if choise_user == "1" or choise_user in [
     "Algebre",
     "algebre",
     "algebra",
-    "analyse",
     "algèbre",
 ]:
-    print("metter ici votre équation")
+    print("Metter ici votre équation")
 elif choise_user == "2" or choise_user in ["Trigo", "trigonometrie", "trigo"]:
     print("mettez ici votre expression trigonometrique")
 elif choise_user == "3" or choise_user in ["stat", "statistiques", "statistique"]:
-    print("mettez ici votre jeu de données en forme [a,b,c,d,c,e]")
+    print("mettez ici votre jeu de données en forme ")
     liste = input("Poser ici votre liste : ")
     print(exec_stat(liste))
 
