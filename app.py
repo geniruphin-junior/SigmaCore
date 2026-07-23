@@ -9,7 +9,7 @@ choise_user = input("quelle est votre option : ")
 if choise_user == "1" or choise_user in [
     "Algebre",
     "algebre",
-    "alg",
+    "algebra",
     "analyse",
     "algèbre",
 ]:
