@@ -11,7 +11,6 @@ if choise_user == "1" or choise_user in [
     "Algebre",
     "algebre",
     "algebra",
-    "analyse",
     "algèbre",
 ]:
     print("Metter ici votre équation")
