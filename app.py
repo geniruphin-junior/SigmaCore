@@ -14,7 +14,7 @@ if choise_user == "1" or choise_user in [
     "analyse",
     "algèbre",
 ]:
-    print("metter ici votre équation")
+    print("Metter ici votre équation")
 elif choise_user == "2" or choise_user in ["Trigo", "trigonometrie", "trigo"]:
     print("mettez ici votre expression trigonometrique")
 elif choise_user == "3" or choise_user in ["stat", "statistiques", "statistique"]:
