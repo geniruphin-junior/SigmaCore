@@ -1,4 +1,4 @@
-from math_moteur import MathSuperEngine as Me
+from math_moteur import ruphia_ultra_engine as rue
 import sys, os
 from array_stat import exec_stat as stat
 
@@ -17,10 +17,10 @@ while True:
         "algèbre",
     ]:
         equation = input("Metter ici votre équation :")
-        print(Me(equation))
+        print(rue(equation))
     elif choise_user == "2" or choise_user in ["Trigo", "trigonometrie", "trigo"]:
         expr = input(("mettez ici votre expression trigonometrique"))
-        print(Me(expr))
+        print(rue(expr))
     elif choise_user == "3" or choise_user in ["stat", "statistiques", "statistique"]:
         print("mettez ici votre jeu de données en forme ")
         liste = input("Poser ici votre liste : ")
@@ -28,6 +28,6 @@ while True:
 
     elif choise_user == "4":
         calcul = input("mets tes calculs simples ici: ")
-        print(Me(calcul))
+        print(rue(calcul))
     else:
         print("Cette fonctionnalité n'est pas reconnue par le moteur")
