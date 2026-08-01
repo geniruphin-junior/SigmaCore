@@ -1,100 +1,84 @@
 import sympy as sp
-import numpy as np
-import re
 from sympy.parsing.sympy_parser import (
     parse_expr,
     standard_transformations,
     implicit_multiplication_application,
-    convert_xor,
 )
 
 
-def ruphia_ultra_engine(text):
-    try:
-        # 1. PRÉPARATION & NETTOYAGE
-        q = text.lower().strip()
-        t = standard_transformations + (
+class MathSuperEngine:
+    """Moteur de calcul scientifique haute performance pour Ruphia V4"""
+
+    def __init__(self):
+        self.x = sp.symbols("x")
+        # Transformations pour permettre x^2 au lieu de x**2 et 2x au lieu de 2*x
+        self.transformations = standard_transformations + (
             implicit_multiplication_application,
-            convert_xor,
         )
 
-        # 2. CONSTANTES PHYSIQUES ET MATHÉMATIQUES
-        cst = {
-            "pi": sp.pi,
-            "e": sp.exp(1),
-            "i": sp.I,
-            "c": 299792458,
-            "g": 9.81,
-            "G": 6.67e-11,
-            "h": 6.626e-34,
-            "na": 6.022e23,
-            "c": sp.Symbol("c", real=True, positive=True),
-            "g": sp.Symbol("g", real=True, positive=True),
-            "G": sp.Symbol("G", real=True, positive=True),
-            "h": sp.Symbol("h", real=True, positive=True),
-            "hbar": sp.Symbol("hbar", real=True, positive=True),
-            "kb": sp.Symbol("kb", real=True, positive=True),
-            "na": sp.Symbol("na", real=True, positive=True),
-            "me": sp.Symbol("me", real=True, positive=True),
-            "qe": sp.Symbol("qe", real=True, positive=True),
-        }
+    def _parse(self, expr_str):
+        """Convertit la chaine de l'utilisateur en expression SymPy sécurisée."""
+        # Remplace ^ par ** pour la syntaxe Python
+        expr_str = expr_str.replace("^", "**")
+        # Gestion des équations avec '='
+        if "=" in expr_str:
+            left, right = expr_str.split("=")
+            return parse_expr(
+                f"{left.strip()} - ({right.strip()})",
+                transformations=self.transformations,
+            )
+        return parse_expr(expr_str, transformations=self.transformations)
 
-        # 3. PRÉ-PROCESSING TRIGO (Degrés vers Radians)
-        # Remplace 'sin(45deg)' ou 'sin 45 deg' par la version radians pour Sympy
-        if "deg" in q:
-            q = re.sub(r"(\d+)\s*deg", r"(\1*pi/180)", q)
+    # --- ALGEBRE ---
+    def algebra(self, cmd="solve", expr_str="2x = 2-4x"):
+        """Routeur centralisé."""
+        try:
+            expr = self._parse(expr_str)
 
-        # Correction auto : 'sin5' -> 'sin(5)'
-        q = re.sub(r"(sin|cos|tan|log|sqrt)(\d+)", r"\1(\2)", q)
+            if cmd == "solve":
+                return f"Solution: {sp.solve(expr, self.x)}"
 
-        # 4. NETTOYAGE DES MOTS-CLÉS DE COMMANDE
-        clean = q
-        for v in ["calcule", "résous", "dérive", "intègre", "limite", "simplifie"]:
-            if v in clean:
-                clean = clean.split(v)[-1].strip()
+            elif cmd == "diff":
+                return f"Dérivée: {sp.diff(expr, self.x)}"
 
-        # 5. PARSING DE L'EXPRESSION
-        expr = parse_expr(clean.replace("=", "-"), transformations=t, local_dict=cst)
-        syms = list(expr.free_symbols)
+            elif cmd == "int":
+                return f"Intégrale: {sp.integrate(expr, self.x)} + C"
 
-        # 6. MOTEUR DE DÉCISION PUISSANT
-        if any(w in q for w in ["dérive", "diff"]):
-            var = syms[0] if syms else sp.Symbol("x")
-            res = sp.diff(expr, var)
-            sig = "Dérivation"
-        elif any(w in q for w in ["intègre", "intégrale"]):
-            var = syms[0] if syms else sp.Symbol("x")
-            res = sp.integrate(expr, var)
-            sig = "Intégration"
-        elif any(w in q for w in ["résous", "solution", "solve"]):
-            res = sp.solve(expr, syms)
-            sig = "Équation(s)"
-        else:
-            # Simplification trigo et mathématique par défaut
-            res = sp.simplify(sp.trigsimp(expr))
-            sig = "Résultat Simplifié"
+            elif cmd == "simplify":
+                return f"Simplification: {sp.simplify(expr)}"
+            else:
+                return f"expression indisponible"
+        except Exception as e:
+            return f"Erreur de calcul: {str(e)}"
 
-        # 7. FORMATTAGE DE SORTIE (Symbolique + Décimal)
-        if hasattr(res, "free_symbols") and not res.free_symbols:
-            try:
-                val_dec = float(res.evalf())
-                final = f"{res} ≈ {val_dec:.6f}"
-            except:
-                final = res
-        else:
-            final = res
+    # --- TRIGONOMETRIE ---
+    def trigonometrie(self, cmd="trig_simp", expr_str="cos4"):
+        try:
+            expr = self._parse(expr_str)
 
-        return f"✨ RUPHIA ANALYSE [{sig}] -> {final}"
+            if cmd == "trig_simp":
+                return f"Forme simplifiée: {sp.trigsimp(expr)}"
 
-    except Exception as e:
-        return f"❌ Erreur Ruphia : Analyse impossible ({str(e)})"
+            elif cmd == "trig_expand":
+                return f"Développement trig: {sp.expand_trig(expr)}"
+
+            else:
+                return "Commande inconnue."
+
+        except Exception as e:
+            return f"Erreur de calcul: {str(e)}"
 
 
+# --- EXEMPLE D'UTILISATION DANS LA CONSOLE ---
 if __name__ == "__main__":
-    print("═══ RUPHIA 4.0 : MOTEUR MATHÉMATIQUE ACTIF ═══")
-    print("Mode : Sympy + Numpy | Stat, Trigo, Algèbre")
-    while True:
-        user_input = input("\n[KNG] Commande : ")
-        if user_input.lower() in ["exit", "quitter", "q"]:
-            break
-        print(ruphia_ultra_engine(user_input))
+    brain = MathSuperEngine()
+
+    # Test Algèbre
+    print(brain.algebra("solve", "x^2 - 4 = 0"))
+
+    # Test Trigo (simplification de sin^2 + cos^2)
+    print(brain.trigonometrie("trig_simp", "sin(x)^2 + cos(x)^2"))
+
+    # Test Dérivée
+    print(brain.trigonometrie("diff", "sin(x) * x"))
+    print(brain.algebra("2x-3x = 0"))
