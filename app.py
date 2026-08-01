@@ -1,5 +1,5 @@
 # import des modules persos,de numpy et sympy
-from math_moteur import ruphia_ultra_engine as rue
+from math_moteur import MathSuperEngine as Me
 import sys, os
 from array_stat import exec_stat as stat
 import sys
@@ -26,12 +26,12 @@ try:
             "algèbre",
         ]:
             equation = input("Metter ici votre équation :")
-            print(rue(equation))
+            print(Me(equation))
 
         # trigonometrie
         elif choise_user == "2" or choise_user in ["Trigo", "trigonometrie", "trigo"]:
             expr = input(("mettez ici votre expression trigonometrique"))
-            print(rue(expr))
+            print(Me(expr))
 
         # statistiques
         elif choise_user == "3" or choise_user in [
@@ -46,7 +46,7 @@ try:
         # calcul basique
         elif choise_user == "4":
             calcul = input("mets tes calculs simples ici: ")
-            print(rue(calcul))
+            print(Me(calcul))
 
         # documentations
         elif choise_user == "6":
