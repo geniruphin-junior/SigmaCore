@@ -30,7 +30,7 @@ class MathSuperEngine:
         return parse_expr(expr_str, transformations=self.transformations)
 
     # --- ALGEBRE ---
-    def algebra(self, cmd, expr_str):
+    def algebra(self, cmd="solve", expr_str="2x = 2-4x"):
         """Routeur centralisé."""
         try:
             expr = self._parse(expr_str)
@@ -52,7 +52,7 @@ class MathSuperEngine:
             return f"Erreur de calcul: {str(e)}"
 
     # --- TRIGONOMETRIE ---
-    def trigonometrie(self, cmd, expr_str):
+    def trigonometrie(self, cmd="trig_simp", expr_str="cos4"):
         try:
             expr = self._parse(expr_str)
 
@@ -81,4 +81,4 @@ if __name__ == "__main__":
 
     # Test Dérivée
     print(brain.trigonometrie("diff", "sin(x) * x"))
-    print("2x-3x")
+    print(brain.algebra("2x-3x = 0"))
