@@ -5,10 +5,9 @@ import sys
 
 print("======== Bienvenue dans le moteur scientifique =========\n")
 print("Mode : Sympy + Numpy | Stat, Trigo, Algèbre")
-menu = "1.Algèbre\n2.Trigonometrie\n3.Stat\n4.calcul simple\n5.Retour"
+menu = "1.Algèbre\n2.Trigonometrie\n3.Stat\n4.calcul simple\n5.Retour\n6.documentation"
 print(menu)
-with open("notes.txt", "r", encoding="UTF-8") as doc:
-    print(doc.read())
+
 
 try:
     while True:
