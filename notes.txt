@@ -1,10 +1,12 @@
+
 Sigma core est un moteur mathématique orienté académie,
-ce moeteur couvre la plupart de se que j'ai appris en 2eme année scientifique,
-le but de ce projet était d'unir mes etudes et le code,
+ce moeteur couvre la plupart de ce que j'ai appris en 2eme année scientifique,
+le but de ce projet était d'unir mes études et le code,
+
 Comment l'utiliser ?
-c'est tres simple et il a plusieurs moyens :
+c'est très simple et il a plusieurs moyens :
 1.avec app.py en faisant `python app.py`
 2.avec math_moteur.py
-3.en la connectant et en le transformant en API
+3.en le connectant et en le transformant en API
 
 Merci à tous  d'avoir lu cette docs et courages pour vos vies de devs et d'etudes

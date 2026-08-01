@@ -1,3 +1,4 @@
+# import des modules persos,de numpy et sympy
 from math_moteur import ruphia_ultra_engine as rue
 import sys, os
 from array_stat import exec_stat as stat
@@ -38,6 +39,9 @@ try:
         elif choise_user == "4":
             calcul = input("mets tes calculs simples ici: ")
             print(rue(calcul))
+        elif choise_user == "6":
+            with open(file="notes.txt", mode="r", encoding="UTF-8") as doc:
+                print(doc.read())
         else:
             print("Cette fonctionnalité n'est pas reconnue par le moteur")
 except KeyboardInterrupt:
