@@ -1,4 +1,4 @@
-from math_moteur import MathSuperEngine
+from math_moteur import MathSuperEngine as Me
 import sys, os
 from array_stat import exec_stat as stat
 
@@ -16,15 +16,18 @@ while True:
         "algebra",
         "algèbre",
     ]:
-        print("Metter ici votre équation")
+        equation = input("Metter ici votre équation :")
+        print(Me(equation))
     elif choise_user == "2" or choise_user in ["Trigo", "trigonometrie", "trigo"]:
-        print("mettez ici votre expression trigonometrique")
+        expr = input(("mettez ici votre expression trigonometrique"))
+        print(Me(expr))
     elif choise_user == "3" or choise_user in ["stat", "statistiques", "statistique"]:
         print("mettez ici votre jeu de données en forme ")
         liste = input("Poser ici votre liste : ")
         print(stat(liste))
 
     elif choise_user == "4":
-        print("mets tes calculs")
+        calcul = input("mets tes calculs simples ici: ")
+        print(Me(calcul))
     else:
         print("Cette fonctionnalité n'est pas reconnue par le moteur")
