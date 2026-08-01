@@ -23,4 +23,4 @@ personnelement moi et mon collègue lors de nos révisions et lors de nos devoir
 
 ## Soutient
 
-Si ce projet vous plait,vous interresse ou que vous soyez scientifique n'hesiter pas à lui donner un star et à y contribuer si possible.
+Si ce projet vous plait,vous interresse ou que vous soyez scientifique n'hesiter pas à lui donner un 🌟 et à y contribuer si possible.
