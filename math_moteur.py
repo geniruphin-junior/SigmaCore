@@ -1,3 +1,4 @@
+import math
 import sympy as sp
 from sympy.parsing.sympy_parser import (
     parse_expr,
@@ -67,6 +68,9 @@ class MathSuperEngine:
 
         except Exception as e:
             return f"Erreur de calcul: {str(e)}"
+
+    def simple(expr_str):
+        return eval(expr_str)
 
 
 # --- EXEMPLE D'UTILISATION DANS LA CONSOLE ---

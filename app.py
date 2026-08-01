@@ -26,12 +26,12 @@ try:
             "algèbre",
         ]:
             equation = input("Metter ici votre équation :")
-            print(Me(equation))
+            print(Me.algebra(equation))
 
         # trigonometrie
         elif choise_user == "2" or choise_user in ["Trigo", "trigonometrie", "trigo"]:
             expr = input(("mettez ici votre expression trigonometrique"))
-            print(Me(expr))
+            print(Me.trigonometrie(expr))
 
         # statistiques
         elif choise_user == "3" or choise_user in [
@@ -46,7 +46,7 @@ try:
         # calcul basique
         elif choise_user == "4":
             calcul = input("mets tes calculs simples ici: ")
-            print(Me(calcul))
+            print(Me.simple(calcul))
 
         # documentations
         elif choise_user == "6":
