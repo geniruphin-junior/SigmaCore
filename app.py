@@ -22,7 +22,7 @@ while True:
     elif choise_user == "3" or choise_user in ["stat", "statistiques", "statistique"]:
         print("mettez ici votre jeu de données en forme ")
         liste = input("Poser ici votre liste : ")
-        print(exec_stat(liste))
+        print(stat(liste))
 
     elif choise_user == "4":
         print("mets tes calculs")
